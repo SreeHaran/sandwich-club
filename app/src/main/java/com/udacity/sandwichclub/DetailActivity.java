@@ -2,7 +2,6 @@ package com.udacity.sandwichclub;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView mOtherNames = findViewById(R.id.also_known_tv);
         TextView mIngredients = findViewById(R.id.ingredients_tv);
         TextView mDescription = findViewById(R.id.description_tv);
+
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -55,20 +55,14 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
-        sandwich.getPlaceOfOrigin();
         mOrigin.setText(sandwich.getPlaceOfOrigin());
         mOtherNames.setText(sandwich.getAlsoKnownAs().toString());
         mIngredients.setText(sandwich.getIngredients().toString());
         mDescription.setText(sandwich.getDescription());
-        populateUI();
     }
 
     private void closeOnError() {
         finish();
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
-    }
-
-    private void populateUI() {
-
     }
 }
